@@ -1,12 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+
 require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT;
+const API = process.env.API_SEARCH;
+const LOCAL_API = process.env.LOCAL_API;
 app.use(
   cors({
-    origin: "https://youtube-clone-abc.vercel.app",
+    origin: LOCAL_API,
   })
 );
 
