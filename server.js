@@ -11,10 +11,14 @@ app.use(
 );
 
 app.get("/", async (req, res) => {
-  const { q = "" } = req.query;
-  const response = await fetch(`${process.env.API_SEARCH}${q}`);
-  const result = await response.json();
-  res.status(200).json({ message: "success", data: result });
+  try {
+    const { q = "" } = req.query;
+    const response = await fetch(`${process.env.API_SEARCH}${q}`);
+    const result = await response.json();
+    res.status(200).json({ message: "success", data: result });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.listen(PORT, () => {
