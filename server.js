@@ -19,7 +19,7 @@ app.use(
 app.get("/", async (req, res) => {
   try {
     const { q = "" } = req.query;
-    const response = await fetch(`${API_SEARCH}${q}`);
+    const response = await fetch(`${API}${q}`);
     const result = await response.json();
     res.status(200).json({ message: "success", data: result });
   } catch (error) {
