@@ -9,16 +9,17 @@ const app = express();
 const PORT = process.env.PORT;
 const API = process.env.API_SEARCH;
 const LOCAL_API = process.env.LOCAL_API;
+const PUBLIC_API = process.env.PUBLIC_API;
 app.use(
   cors({
-    origin: LOCAL_API,
+    origin: PUBLIC_API,
   })
 );
 
 app.get("/", async (req, res) => {
   try {
     const { q = "" } = req.query;
-    const response = await fetch(`${process.env.API_SEARCH}${q}`);
+    const response = await fetch(`${API_SEARCH}${q}`);
     const result = await response.json();
     res.status(200).json({ message: "success", data: result });
   } catch (error) {
